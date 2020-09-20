@@ -1,3 +1,6 @@
+#writen by minjiao yang 2020 
+#this code was taken from https://github.com/arapfaik/scraping-glassdoor-selenium/raw/master/glassdoor%20scraping.ipynb
+
 from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
 from selenium import webdriver
 import time
