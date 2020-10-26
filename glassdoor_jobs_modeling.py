@@ -90,3 +90,22 @@ print('MAE for Random Forest Regressor:',mean_absolute_error(y_test,pred_rf))
 #See if two models together perform better
 print('MAE of Linear Regression combined with random Forest Regressor:',mean_absolute_error(y_test, (pred_lm+pred_rf)/2))
 
+####FLASK API
+###Building flask API endpoint
+#take model bulit for predicting glassdoor salary, turn it into an API endpoint using flask
+#this is known as porductionization and with an API endpoint we can have a website to reach out to it and get back reponse
+#for our case is our website send information related to a job and our API endpoint return an expected salary 
+
+import pickle
+pickl = {'model': gs.best_estimator_}
+pickle.dump( pickl, open( 'model_file' + ".p", "wb" ) )
+
+file_name = "model_file.p"
+with open(file_name, 'rb') as pickled:
+   data = pickle.load(pickled)
+   model = data['model']
+
+model.predict(X_test.iloc[1,:].values.reshape(1,-1)) #salary prediction for the position is $74.2375 
+#pickle does work
+
+list(X_test.iloc[1,:])
